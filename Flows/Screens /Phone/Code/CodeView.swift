@@ -27,6 +27,11 @@ struct CodeView: View {
                 }) {
                     Text("login")
                 }
+                Button(action: {
+                    viewModel.moveToBack()
+                }) {
+                    Text("Back")
+                }
             }
         }
     }

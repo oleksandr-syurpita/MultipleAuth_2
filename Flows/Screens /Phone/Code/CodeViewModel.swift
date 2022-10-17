@@ -21,13 +21,18 @@ class CodeViewModel: ObservableObject {
         self.id = id
     }
     enum Result {
-        case navigationLogIn
+        case navigationHome
+        case navigationBack
     }
     
     var onResult:((Result) -> Void)?
     
-    func moveToLogInScreen() {
-        onResult?(.navigationLogIn)
+    func moveToHomeScreen() {
+        onResult?(.navigationHome)
+    }
+    
+    func moveToBack() {
+        onResult?(.navigationBack)
     }
     
     func verifyOTP() {
@@ -39,7 +44,7 @@ class CodeViewModel: ObservableObject {
             }
             
             self.alertMsg = "Success"
-            self.moveToLogInScreen()
+            self.moveToHomeScreen()
             self.showAlert.toggle()
         }
     }
