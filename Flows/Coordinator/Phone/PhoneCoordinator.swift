@@ -10,7 +10,7 @@ import Foundation
 class PhoneCoordinator: ObservableObject {
     
     enum Route {
-        case navigationToCodeScreen
+        case navigationToCodeScreen(codeCoordinator: CodeCoordinator)
     }
     
     @Published var route: Route?
@@ -30,5 +30,6 @@ class PhoneCoordinator: ObservableObject {
     
     func moveToCodeScreen(id: String) {
         let codeCoordinator = CodeCoordinator(viewModel: CodeViewModel(id: id))
+        
     }
 }

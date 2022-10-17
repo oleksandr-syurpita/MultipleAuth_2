@@ -8,9 +8,17 @@
 import Foundation
 
 class CodeCoordinator: ObservableObject {
+    
     enum Route {
-        case navigationToLogIn
+        case navigationHome
+        case navigationBack
     }
+    
+    enum Result {
+        case navigationBack
+    }
+    
+    var onResult:((Result) -> Void)?
     
     @Published var route: Route?
     
@@ -20,8 +28,10 @@ class CodeCoordinator: ObservableObject {
         viewModel.onResult = { [weak self] result in
             switch result {
                 
-            case .navigationLogIn:
+            case .navigationHome:
                 self?.moveToCodeSreen()
+            case .navigationBack:
+                    break
             }
         }
     }
