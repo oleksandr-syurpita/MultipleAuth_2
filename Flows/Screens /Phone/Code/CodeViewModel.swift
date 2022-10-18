@@ -45,6 +45,7 @@ class CodeViewModel: ObservableObject {
             
             self.alertMsg = "Success"
             self.moveToHomeScreen()
+            UserDefaults.standard.set(true, forKey: "log_Status")
             self.showAlert.toggle()
         }
     }
