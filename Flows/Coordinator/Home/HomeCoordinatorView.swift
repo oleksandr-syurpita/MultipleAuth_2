@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
-
+import SwiftUINavigation
 struct HomeCoordinatorView: View {
+    @ObservedObject var coordinator: HomeCoordinator
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ZStack {
+                HomeView(viewModel: coordinator.viewModel)
+            }
+        }
     }
 }
 
-struct HomeCoordinatorView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeCoordinatorView()
-    }
-}
