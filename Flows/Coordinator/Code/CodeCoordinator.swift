@@ -10,7 +10,7 @@ import Foundation
 class CodeCoordinator: ObservableObject {
     
     enum Route {
-        case navigationHome
+        case navigationHome(homeCoordinator: HomeCoordinator)
         case navigationBack
     }
     
@@ -29,13 +29,21 @@ class CodeCoordinator: ObservableObject {
             switch result {
                 
             case .navigationHome:
-                self?.moveToCodeSreen()
+                self?.moveToHomeSreen()
             case .navigationBack:
-                    break
+                self?.onResult?(.navigationBack)
             }
         }
     }
-    func moveToCodeSreen() {
-        return
+    func moveToHomeSreen() {
+        let coordinator = HomeCoordinator(viewModel: HomeViewModel())
+        coordinator.onResult = {[weak self] result in
+            switch result {
+                
+            case .navigationBack:
+                    self?.route = nil
+            }
+        }
+        route = .navigationHome(homeCoordinator: coordinator)
     }
 }

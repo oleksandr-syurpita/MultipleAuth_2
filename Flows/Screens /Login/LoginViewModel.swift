@@ -16,10 +16,14 @@ class LoginViewModel: ObservableObject {
         case navigationToPhoneScreen
         case navigationToAppleScreen
         case navigationToGoogleScreen
+        case navigationToHomeScreen
     }
     
     var onResult:((Result) -> Void)?
     
+    func moveToHomeScreen() {
+        onResult?(.navigationToHomeScreen)
+    }
     func moveToPhoneScreen() {
         onResult?(.navigationToPhoneScreen)
     }

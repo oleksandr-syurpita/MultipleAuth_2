@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 struct HomeView: View {
-    @AppStorage ("log_status") var log_Status: Bool = false
+    @State var log_Status = UserDefaults.standard.value(forKey: "log_status") as? Bool ?? false
     @ObservedObject var viewModel: HomeViewModel
     var body: some View {
         ZStack {
@@ -20,7 +20,7 @@ struct HomeView: View {
                     withAnimation(.easeInOut) {
                         log_Status = false
                     }
-                }
+                    }
                 }
             }
         }

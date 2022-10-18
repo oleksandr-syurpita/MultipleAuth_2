@@ -31,5 +31,12 @@ class PhoneCoordinator: ObservableObject {
     func moveToCodeScreen(id: String) {
         let codeCoordinator = CodeCoordinator(viewModel: CodeViewModel(id: id))
         
+        codeCoordinator.onResult = {[weak self] result in
+            switch result {
+            case .navigationBack:
+                self?.route = nil
+            }
+        }
+        route = .navigationToCodeScreen(codeCoordinator: codeCoordinator)
     }
 }

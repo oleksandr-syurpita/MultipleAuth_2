@@ -6,13 +6,26 @@
 //
 
 import SwiftUI
-
+import SwiftUINavigation
 struct LoginCoordinatorView: View {
     @ObservedObject var coordinator: LoginCoordinator
     var body: some View {
         NavigationView {
             ZStack {
                 LoginView(viewModel: coordinator.viewModel)
+                NavigationLink(
+                    unwrapping: $coordinator.route,
+                    case: /LoginCoordinator.Route.phoneScreen,
+                    destination: {(coordinator: Binding<PhoneCoordinator>)in
+                        PhoneCoordinatorView(coordinator: coordinator.wrappedValue)
+                    }, onNavigate: { _ in}) {}
+                
+                NavigationLink(
+                    unwrapping: $coordinator.route,
+                    case: /LoginCoordinator.Route.homeScreen,
+                    destination: {(coordinator: Binding<HomeCoordinator>)in
+                        HomeCoordinatorView(coordinator: coordinator.wrappedValue)
+                    }, onNavigate: { _ in}) {}
             }
         }
     }
