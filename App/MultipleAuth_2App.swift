@@ -51,7 +51,7 @@ struct MultipleAuth_2App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            AppCoordinatorView()
+            GoogleView(viewModel: GoogleViewModel())
         }
     }
 }

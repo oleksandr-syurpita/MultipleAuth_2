@@ -6,6 +6,7 @@ import SwiftUI
 
 class GoogleViewModel: ObservableObject {
 
+    @AppStorage ("log_status") var log_Status: Bool = false
 
     @Published var isLogin: Bool = false
     @Published var showError: Bool = false

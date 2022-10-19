@@ -7,15 +7,13 @@
 
 import SwiftUI
 import AuthenticationServices
-import GoogleSignIn
-import GoogleSignInSwift
 
 struct GoogleView: View {
     @StateObject var viewModel: GoogleViewModel
     var body: some View {
         VStack {
-            GoogleSignInButton {
-
+            Button(action: {viewModel.signUpWithGoogle()}) {
+                Text("Google")
             }
         }
     }
