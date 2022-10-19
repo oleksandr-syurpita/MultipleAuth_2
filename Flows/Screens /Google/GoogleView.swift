@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import AuthenticationServices
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct GoogleView: View {
-    @ObservedObject var viewModel: GoogleViewModel
+    @StateObject var viewModel: GoogleViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            GoogleSignInButton {
+
+            }
+        }
     }
 }
 

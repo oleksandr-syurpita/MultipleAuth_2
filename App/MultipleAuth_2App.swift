@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseAuth
+import GoogleSignIn
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -15,6 +16,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         
         return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any])
+      -> Bool {
+      return GIDSignIn.sharedInstance.handle(url)
     }
     
     func application(_ application: UIApplication,
@@ -27,14 +34,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
     }
     
-    func application(_ application: UIApplication, open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        if Auth.auth().canHandle(url) {
-            return true
-        }
-        return false
-    }
-    
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
       // Pass device token to auth
       Auth.auth().setAPNSToken(deviceToken, type: .prod)
@@ -51,7 +51,7 @@ struct MultipleAuth_2App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppCoordinatorView()
         }
     }
 }
