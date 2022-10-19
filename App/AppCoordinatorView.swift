@@ -1,26 +1,32 @@
 //
-//  ContentView.swift
+//  AppCoordinatorView.swift
 //  MultipleAuth_2
 //
 //  Created by admin on 14.10.2022.
 //
 
 import SwiftUI
+import FirebaseAuth
 
-struct ContentView: View {
-    @State var log_Status = UserDefaults.standard.value(forKey: "log_status") as? Bool ?? false
+struct AppCoordinatorView: View {
 
     var body: some View {
-        if log_Status {
+        if Auth.auth().currentUser != nil {
             HomeCoordinatorView(coordinator: HomeCoordinator(viewModel: HomeViewModel()))
         } else {
             LoginCoordinatorView(coordinator: LoginCoordinator(viewModel: LoginViewModel()))
         }
+//        switch coordinator.route{
+//        case .home:
+//            break
+//        case .login:
+//            break
+//        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AppCoordinatorView()
     }
 }
