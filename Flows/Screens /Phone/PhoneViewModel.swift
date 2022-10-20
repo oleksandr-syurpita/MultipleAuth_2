@@ -10,18 +10,18 @@ import Firebase
 import FirebaseAuth
 
 class PhoneViewModel: ObservableObject {
-
+    
     @Published var phone = ""
     @Published var showAlert = false
     @Published var alertMsg = ""
-
+    
     var id: String = String()
-
+    
     enum Result {
         case navigationOTP(id: String)
     }
     var onResult:((Result) -> Void)?
-//    @Published var navigateOTP = false // navigation
+    //    @Published var navigateOTP = false // navigation
     
     func sendOTP() { // OTP
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { verificationId, err in

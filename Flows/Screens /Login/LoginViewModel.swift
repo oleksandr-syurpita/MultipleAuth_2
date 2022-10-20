@@ -11,7 +11,7 @@ import Firebase
 class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
-
+    
     enum Result {
         case navigationToPhoneScreen
         case navigationToAppleScreen

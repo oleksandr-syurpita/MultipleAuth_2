@@ -27,9 +27,8 @@ struct LoginView: View {
                         if !verify {
                             //add alert for error
                         } else {
-                            UserDefaults.standard.set(true, forKey: "log_Status")
                             viewModel.moveToHomeScreen()
-
+                            
                         }
                     }}) {
                         Text("Create user")
@@ -42,7 +41,6 @@ struct LoginView: View {
                         if !verify {
                             //add alert for error
                         } else {
-                            UserDefaults.standard.set(true, forKey: "log_Status")
                             viewModel.moveToHomeScreen()
                         }
                     }}) {

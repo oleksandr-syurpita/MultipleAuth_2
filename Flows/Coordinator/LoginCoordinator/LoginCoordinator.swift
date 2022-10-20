@@ -8,9 +8,10 @@
 import Foundation
 
 class LoginCoordinator: ObservableObject {
+    
     enum Route {
-        case googleScreen
-        case appleScreen
+        case googleScreen(googleCoordinator: GoogleCoordinator)
+        case appleScreen(appleCoordinator: AppleCoordinator)
         case phoneScreen(phoneCoordinator: PhoneCoordinator)
         case homeScreen(homeCoordinator: HomeCoordinator)
     }
@@ -26,13 +27,25 @@ class LoginCoordinator: ObservableObject {
             case .navigationToPhoneScreen:
                 self?.moveToPhoneScreen()
             case .navigationToAppleScreen:
-                break
+                self?.moveToAppleScreen()
             case .navigationToGoogleScreen:
-                break
+                self?.moveToGoogleScreen()
             case .navigationToHomeScreen:
                 self?.moveToHomeScreen()
             }
         }
+    }
+    
+    func moveToGoogleScreen() {
+        let googleCoordinator = GoogleCoordinator(viewModel: GoogleViewModel())
+        
+        route = .googleScreen(googleCoordinator: googleCoordinator)
+    }
+    
+    func moveToAppleScreen() {
+        let appleCoordinator = AppleCoordinator(viewModel: AppleViewModel())
+        
+        route = .appleScreen(appleCoordinator: appleCoordinator)
     }
     
     func moveToPhoneScreen() {
