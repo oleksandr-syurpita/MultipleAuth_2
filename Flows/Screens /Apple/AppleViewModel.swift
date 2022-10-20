@@ -15,7 +15,6 @@ class AppleViewModel: ObservableObject {
         case naviggationToHome
     }
     
-    @Published var isLogginApple = false
     @Published var nonce = ""
     var currentNonce: String?
     var onResult: ((Result) -> Void)?

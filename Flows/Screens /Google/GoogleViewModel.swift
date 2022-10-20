@@ -10,9 +10,6 @@ class GoogleViewModel: ObservableObject {
         case navigationHome
     }
     
-    @AppStorage ("log_status") var log_Status: Bool = false
-    @Published var showError: Bool = false
-    @Published var errorMessage: String = ""
     var onResult:((Result) -> Void)?
     
     func moveToHomeScreen() {

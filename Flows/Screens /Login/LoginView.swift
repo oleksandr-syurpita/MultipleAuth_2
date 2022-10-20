@@ -28,7 +28,7 @@ struct LoginView: View {
                             //add alert for error
                         } else {
                             viewModel.moveToHomeScreen()
-
+                            
                         }
                     }}) {
                         Text("Create user")
