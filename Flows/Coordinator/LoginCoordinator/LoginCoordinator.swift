@@ -15,6 +15,7 @@ class LoginCoordinator: ObservableObject {
         case homeScreen(homeCoordinator: HomeCoordinator)
     }
     
+    
     @Published var route: Route?
     var viewModel: LoginViewModel
     
@@ -33,6 +34,17 @@ class LoginCoordinator: ObservableObject {
                 self?.moveToHomeScreen()
             }
         }
+    }
+    
+    func moveToGoogleScreen() {
+        let googleCoordinator = Google
+        
+        route = .phoneScreen(phoneCoordinator: phoneCoordinator)
+    }
+    func moveToAppleScreen() {
+        let phoneCoordinator = PhoneCoordinator(viewModel: PhoneViewModel())
+        
+        route = .phoneScreen(phoneCoordinator: phoneCoordinator)
     }
     
     func moveToPhoneScreen() {

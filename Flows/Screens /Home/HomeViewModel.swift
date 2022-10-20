@@ -24,5 +24,6 @@ class HomeViewModel: ObservableObject {
     func logOut() {
         try? Auth.auth().signOut()
         GIDSignIn.sharedInstance.signOut()
+        moveToBack()
     }
 }
