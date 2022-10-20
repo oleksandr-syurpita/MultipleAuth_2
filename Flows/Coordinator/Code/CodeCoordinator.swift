@@ -37,13 +37,6 @@ class CodeCoordinator: ObservableObject {
     }
     func moveToHomeSreen() {
         let coordinator = HomeCoordinator(viewModel: HomeViewModel())
-        coordinator.onResult = {[weak self] result in
-            switch result {
-                
-            case .navigationBack:
-                    self?.route = nil
-            }
-        }
         route = .navigationHome(homeCoordinator: coordinator)
     }
 }

@@ -25,6 +25,22 @@ struct LoginCoordinatorView: View {
                     case: /LoginCoordinator.Route.homeScreen,
                     destination: {(coordinator: Binding<HomeCoordinator>)in
                         HomeCoordinatorView(coordinator: coordinator.wrappedValue)
+                            .navigationBarHidden(true)
+                    }, onNavigate: { _ in}) {}
+                
+                NavigationLink(
+                    unwrapping: $coordinator.route,
+                    case: /LoginCoordinator.Route.appleScreen,
+                    destination: {(coordinator: Binding<AppleCoordinator>)in
+                        AppleCoordinatorView(coordinator: coordinator.wrappedValue)
+                    }, onNavigate: { _ in}) {}
+                
+                NavigationLink(
+                    unwrapping: $coordinator.route,
+                    case: /LoginCoordinator.Route.googleScreen,
+                    destination: {(coordinator: Binding<GoogleCoordinator>)in
+                        GoogleCoordinatorView(coordinator: coordinator.wrappedValue)
+                            .navigationBarHidden(true)
                     }, onNavigate: { _ in}) {}
             }
         }

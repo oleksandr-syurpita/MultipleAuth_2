@@ -6,12 +6,18 @@ import SwiftUI
 
 class GoogleViewModel: ObservableObject {
 
+    enum Result {
+        case navigationHome
+    }
+    
     @AppStorage ("log_status") var log_Status: Bool = false
-
-    @Published var isLogin: Bool = false
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
-
+    var onResult:((Result) -> Void)?
+    
+    func moveToHomeScreen() {
+        onResult?(.navigationHome)
+    }
     
     func signUpWithGoogle() {
         // get up client id
@@ -50,8 +56,8 @@ class GoogleViewModel: ObservableObject {
 
                 guard let user = result?.user else  { return }
                 print(user.displayName as Any) // MARK
-                self.isLogin.toggle()
             }
+            self.moveToHomeScreen()
         }
     }
 }

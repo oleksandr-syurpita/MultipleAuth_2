@@ -9,11 +9,11 @@ import Foundation
 
 class HomeCoordinator: ObservableObject {
     
-    enum Result {
-        case navigationBack
+    enum Route {
+        case loginScreen(LoginCoordinator: LoginCoordinator)
     }
     
-    var onResult:((Result) -> Void)?
+    @Published var route: Route?
     
     var viewModel:HomeViewModel
     
@@ -21,10 +21,14 @@ class HomeCoordinator: ObservableObject {
         self.viewModel = viewModel
         viewModel.onResult = {[weak self] result in
             switch result {
-                
             case .navigationBack:
-                self?.onResult?(.navigationBack)
+                self?.moveToLoginScreen()
             }
         }
+    }
+    
+    func moveToLoginScreen() {
+        let loginCoordinator = LoginCoordinator(viewModel:LoginViewModel())
+        route = .loginScreen(LoginCoordinator: loginCoordinator)
     }
 }
