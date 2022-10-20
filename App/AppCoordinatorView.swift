@@ -26,13 +26,3 @@ struct AppCoordinatorView: View {
         }
     }
 }
-
-//if Auth.auth().currentUser != nil {
-//    HomeCoordinatorView(coordinator: HomeCoordinator(viewModel: HomeViewModel()))
-//} else {
-//    LoginCoordinatorView(coordinator: LoginCoordinator(viewModel: LoginViewModel()))
-//}
-//case .navigationMain:
-//    HomeView(viewModel: coordinator.homeViewModel)
-//case .none:
-//    EmptyView()
